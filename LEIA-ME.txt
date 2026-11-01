@@ -1,0 +1,20 @@
+Naruto RAW Batch Extractor
+=========================
+
+Como usar (Windows)
+1. Instale Python 3 se ainda não tiver. O programa usa apenas bibliotecas incluídas no Python.
+2. Execute `Naruto_RAW_Batch_Extractor.py` (duplo clique ou `python Naruto_RAW_Batch_Extractor.py`).
+3. Clique em “Adicionar arquivos .raw…” para escolher vários arquivos, ou “Adicionar pasta…” para procurar RAWs em lote.
+4. Escolha uma pasta de saída e clique em “Extrair tudo”.
+
+Opções de extração
+- “Extrair apenas o PM0/TEX principal”: exporta somente a primeira pasta interna (índice 0), usando `<nome>.pm0` e `<nome>.tex`, e ignora as pastas adicionais que gerariam nomes com `_folderN`.
+- Se a opção acima estiver desmarcada, o programa tenta exportar as entradas 0 e 1 de todas as pastas internas; acrescenta `_folderN` aos nomes quando necessário para não sobrescrever arquivos sem aviso.
+- “Sobrescrever arquivos existentes”: permite substituir arquivos que já existam na pasta de saída.
+- O filho de índice 0 é tratado como modelo (.pm0) e o filho de índice 1 como textura (.tex). Os bytes são copiados sem conversão.
+
+Limitações importantes
+- A regra de índices foi inferida do exemplo visual (raw_0_0 = modelo e raw_0_1 = texturas). Ela precisa ser validada com arquivos RAW reais diferentes.
+- A opção “principal” considera a primeira pasta interna do RAW como principal; isso é uma hipótese baseada na estrutura observada, não uma identificação semântica garantida.
+- Este extrator não converte nem decodifica texturas; apenas exporta os blocos binários.
+- Se um arquivo falhar, a mensagem aparecerá na área de log.
